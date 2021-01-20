@@ -21,15 +21,15 @@ module Stepable
     (-2..2).each do |i|
       unless i == 0
         if i %2 == 0
-           dirs << [x+i, y+1] if valid_pos([x+i, y+1])
-           dirs << [x+i, y-1] if valid_pos([x+i, y-1])
+           dirs << [[x+i, y+1]] if valid_pos([x+i, y+1])
+           dirs << [[x+i, y-1]] if valid_pos([x+i, y-1])
         else
-          dirs << [x+i, y+2] if valid_pos([x+i, y+2])
-          dirs << [x+i, y-2] if valid_pos([x+i, y-2])
+          dirs << [[x+i, y+2]] if valid_pos([x+i, y+2])
+          dirs << [[x+i, y-2]] if valid_pos([x+i, y-2])
         end
       end
     end
-    [dirs]
+    dirs
   end
 
   def moves
