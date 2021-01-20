@@ -13,7 +13,7 @@ class Bishop < Piece
     end
   end
 
-  private
+  
 
   def move_dirs
     return :diagonal

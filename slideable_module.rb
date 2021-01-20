@@ -1,9 +1,6 @@
 module Slideable
 
-  HORIZONTAL_DIRS = []
-
-  DIAGONAL_DIRS = []
-
+  
 
   def horizontal_dirs
     x,y = self.pos
@@ -39,9 +36,9 @@ module Slideable
     if self.move_dirs == :horizontal
       return horizontal_dirs 
     elsif self.move_dirs == :diagonal
-        return diagonal_dir
+        return diagonal_dirs
     else
-      return horizontal_dirs + diagonal_dir
+      return horizontal_dirs + diagonal_dirs
     end
   end
 

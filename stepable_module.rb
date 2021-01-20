@@ -8,10 +8,12 @@ module Stepable
     
     [0,1,-1].each do |i| 
       [0,1,-1].each do |j|
-        dirs << [x+i,y+j] unless x+i == x && y+j == y
+        unless x+i == x && y+j == y
+          dirs << [[x+i,y+j]] if valid_pos([x+i,y+j])
+        end
       end
     end
-    [dirs]
+    dirs
   end
 
   def knight_dir

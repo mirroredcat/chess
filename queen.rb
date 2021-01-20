@@ -12,7 +12,7 @@ class Queen < Piece
     end
   end
 
-  private
+ 
 
   def move_dirs
     return :queen

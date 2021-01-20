@@ -12,7 +12,7 @@ class Rook < Piece
     end
   end
 
-  private
+  
 
 
   def move_dirs

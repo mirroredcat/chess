@@ -1,7 +1,9 @@
 require_relative 'pieces'
+require_relative 'stepable_module'
 
 class King < Piece
 
+  include Stepable
   def symbol
     if @color == :B
       "\u265A"
@@ -11,6 +13,6 @@ class King < Piece
   end
 
   def move_dirs
-    return :queen
+    return :king
   end
 end
