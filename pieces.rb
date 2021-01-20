@@ -15,7 +15,19 @@ class Piece
   end
 
   def valid_moves
-
+    valid_moves = []
+    all_moves = self.moves
+    all_moves.each do |dir|
+      dir.each do |square|
+        if @board[square[0]][square[1]].empty?
+          valid_moves << square
+        else
+          valid_moves << square if @board[square[0]][square[1]].color != @color 
+          break
+        end
+      end
+    end
+    valid_moves
   end
 
   def symbol

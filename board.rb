@@ -8,15 +8,25 @@ class Board
   def initialize
     @rows = Array.new(8){Array.new(8)}
 
-    @rows[0] = [rook = Piece.new, knight = Piece.new, bishop = Piece.new, 
-              queen = Piece.new, king = Piece.new, bishop = Piece.new, 
-              knight = Piece.new, rook = Piece.new ]
-    @rows[1].map!{|pawn| pawn = Piece.new}
+    @rows[0] = [Rook.new(:B,@rows,[0,0]), 
+              Knight.new(:B,@rows,[0,1], 
+              Bishop.new(:B,@rows,[0,2], 
+              Queen.new(:B,@rows,[0,3], 
+              King.new(:B,@rows,[0,4], 
+              Bishop.new(:B,@rows,[0,5], 
+              Knight.new(:B,@rows,[0,6], 
+              Rook.new(:B,@rows,[0,7] ]
+    @rows[1].each_with_index{|pawn,i| pawn = Pawn.new(:B, @rows,[1,i])}
 
-    @rows[-2].map!{|pawn| pawn = Piece.new}
-    @rows[-1] = [rook = Piece.new, knight = Piece.new, bishop = Piece.new, 
-    queen = Piece.new, king = Piece.new, bishop = Piece.new, 
-    knight = Piece.new, rook = Piece.new ]
+    @rows[-2].each_with_index{|pawn,i| pawn = Pawn.new(:W, @rows,[1,i])}
+    @rows[-1] = [Rook.new(:W,@rows,[7,0]), 
+                Knight.new(:W,@rows,[7,1], 
+                Bishop.new(:W,@rows,[7,2], 
+                Queen.new(:W,@rows,[7,3], 
+                King.new(:W,@rows,[7,4], 
+                Bishop.new(:W,@rows,[7,5], 
+                Knight.new(:W,@rows,[7,6], 
+                Rook.new(:W,@rows,[7,7] ]
 
   end
 
