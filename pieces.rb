@@ -1,28 +1,34 @@
 require_relative 'board'
 require 'byebug'
+require 'colorize'
 
 class Piece
+  attr_accessor :pos, :board, :selected
+  attr_reader :color
 
-  attr_reader :pos, :color
-  attr_accessor :board
-
-  def initialize(color,board,pos)
+  def initialize(color, board, pos)
     @color = color
     @board = board
     @pos = pos
+    @selected = false
   end
 
   def to_s
-    self.symbol
+    symbol
   end
 
   def empty?
     false
   end
 
+  def toggle_selected
+    @selected == false ? true : false
+  end
+
+
   def all_possible_moves
     possible_moves = []
-    all_moves = self.moves
+    all_moves = moves
     all_moves.each do |dir|
       dir.each do |square|
         if @board[square].empty?
@@ -37,21 +43,14 @@ class Piece
   end
 
   def valid_moves
-    all_possible_moves.select {|move| !move_into_check?(move)}
+    all_possible_moves.select { |move| !move_into_check?(move) }
   end
 
   def symbol
     :X
   end
 
-  def pos= (val)
-    @pos = val
-  end
-
- 
-
   # private
-
 
   def move_into_check?(end_pos)
     start_pos = @pos
@@ -60,5 +59,4 @@ class Piece
     new_board.move_pieces!(start_pos, end_pos)
     new_board.in_check?(@color)
   end
-
 end

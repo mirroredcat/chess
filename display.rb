@@ -1,20 +1,33 @@
-require_relative "board.rb"
-require_relative "cursor"
+require_relative 'board'
+require_relative 'cursor'
+require_relative 'pieces'
+require 'colorize'
 
 class Display
-
   attr_reader :cursor
+
   def initialize(board)
     @board = board
-    @cursor = Cursor.new([0,0], board)
   end
 
-  def render
-    puts "   #{("a".."h").to_a.join(" ")}"
+
+
+
+  def render(highlight = nil)
+    puts "   #{('a'..'h').to_a.join(" ")}"
     @board.rows.each.with_index do |row, i|
-      puts "#{8-i} #{row.join(" ")}"
+      row_nr = 8-i
+      if !highlight.nil? 
+        x,y = highlight
+          if i == x
+            puts "#{row_nr} #{row[0...y].join(' ')} #{row[y].symbol.colorize(:red)} #{row[(y+1)..-1].join(' ')}  #{row_nr}"
+          else 
+            puts "#{row_nr} #{row.join(' ')}  #{row_nr}"
+          end
+      else
+        puts "#{row_nr} #{row.join(' ')}  #{row_nr}"
+      end
     end
+    puts "   #{('a'..'h').to_a.join(' ')}"
   end
-
 end
-

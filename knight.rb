@@ -2,7 +2,6 @@ require_relative 'pieces'
 require_relative 'stepable_module'
 
 class Knight < Piece
-
   include Stepable
 
   def symbol
@@ -14,6 +13,6 @@ class Knight < Piece
   end
 
   def move_dirs
-    return :knight
+    :knight
   end
 end

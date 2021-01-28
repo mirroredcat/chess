@@ -4,7 +4,6 @@ require_relative 'slideable_module'
 class Bishop < Piece
   include Slideable
 
-
   def symbol
     if @color == :B
       "\u265D"
@@ -13,10 +12,7 @@ class Bishop < Piece
     end
   end
 
-  
-
   def move_dirs
-    return :diagonal
+    :diagonal
   end
-
 end
